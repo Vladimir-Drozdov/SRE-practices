@@ -22,7 +22,7 @@ mvn -B test
 
 CI (`.github/workflows/ci.yml`) запускается на push и pull request: выполняет `mvn -B test` и собирает Docker-образ с тегом, равным SHA коммита.
 
-Результат CI: 
+Результат CI: https://github.com/Vladimir-Drozdov/SRE-practices/actions/runs/39321823049/job/118297521755
 
 Скриншот: `evidence/ci.png`
 
