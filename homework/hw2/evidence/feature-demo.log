@@ -1,0 +1,19 @@
+﻿PS C:\SRE_systems\SRE-practices\homework\hw2> kubectl get pods -o custom-columns=NAME:.metadata.name,UID:.metadata.uid,RESTARTS:.status.containerStatuses[0].restartCount
+NAME                         UID                                    RESTARTS
+hello-app-5748fcfbd5-z47z4   54f3cb60-d5ca-4ad7-8db8-d71dbae9c6b4   0
+PS C:\SRE_systems\SRE-practices\homework\hw2> curl.exe -s http://localhost:30080/admin/feature
+{"feature":"new-greeting","pod":"hello-app-5748fcfbd5-z47z4","enabled":false}
+PS C:\SRE_systems\SRE-practices\homework\hw2> curl.exe -s http://localhost:30080/message
+{"newGreeting":false,"version":"flag-v1","message":"hello","pod":"hello-app-5748fcfbd5-z47z4"}
+PS C:\SRE_systems\SRE-practices\homework\hw2> curl.exe -s "http://localhost:30080/admin/feature?enabled=true"
+{"feature":"new-greeting","pod":"hello-app-5748fcfbd5-z47z4","enabled":true}
+PS C:\SRE_systems\SRE-practices\homework\hw2> curl.exe -s http://localhost:30080/message
+{"newGreeting":true,"version":"flag-v1","message":"Welcome! This is the new greeting","pod":"hello-app-5748fcfbd5-z47z4"}
+PS C:\SRE_systems\SRE-practices\homework\hw2> curl.exe -s "http://localhost:30080/admin/feature?enabled=false"
+{"feature":"new-greeting","pod":"hello-app-5748fcfbd5-z47z4","enabled":false}
+PS C:\SRE_systems\SRE-practices\homework\hw2> curl.exe -s http://localhost:30080/message
+{"newGreeting":false,"version":"flag-v1","message":"hello","pod":"hello-app-5748fcfbd5-z47z4"}
+PS C:\SRE_systems\SRE-practices\homework\hw2> kubectl get pods -o custom-columns=NAME:.metadata.name,UID:.metadata.uid,RESTARTS:.status.containerStatuses[0].restartCount
+NAME                         UID                                    RESTARTS
+hello-app-5748fcfbd5-z47z4   54f3cb60-d5ca-4ad7-8db8-d71dbae9c6b4   0
+PS C:\SRE_systems\SRE-practices\homework\hw2>
